@@ -5,7 +5,7 @@ using UnityEngine;
 public class Spawner : MonoBehaviour
 {
     public float moveSpeed = .75f;
-    public float spawnTimer = 1.0f;
+    public float spawnTimer = 5.0f;
 
     public Vector3 maxPosLeft;
     public Vector3 maxPosRight;

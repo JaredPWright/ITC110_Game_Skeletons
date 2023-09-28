@@ -5,23 +5,16 @@ using UnityEngine;
 public class Movement : MonoBehaviour
 {
     public float movementSpeed = 0.5f;
+    private bool facingRight = false;
+
+    public bool FacingRight
+    {
+        get { return facingRight; }
+    }
 
     void FixedUpdate()
     {
-        if(Input.GetButton("left"))
-        {
-            transform.Translate(-movementSpeed, 0.0f, 0.0f);
-        }else if(Input.GetButton("right"))
-        {
-            transform.Translate(movementSpeed, 0.0f, 0.0f);
-        }
-
-        if(Input.GetButton("up"))
-        {
-            transform.Translate(0.0f, movementSpeed, 0.0f);
-        }else if(Input.GetButton("down"))
-        {
-            transform.Translate(0.0f, -movementSpeed, 0.0f);
-        }
+        transform.Translate((Input.GetAxis("Horizontal")* movementSpeed * Time.deltaTime), 0.0f, 0.0f);
+        transform.Translate(0.0f, (Input.GetAxis("Vertical") * movementSpeed * Time.deltaTime), 0.0f);
     }
 }
