@@ -34,7 +34,7 @@ public class BadGuyBrain : MonoBehaviour
 
     void OnTriggerEnter2D(Collider2D other)
     {
-        if(other.gameObject.CompareTag("BadGuyTrigger"))
+        if(other.gameObject.CompareTag("BadGuyTriggers"))
         {
             seekingPlayer = true;
         }else if(other.gameObject.CompareTag("Despawner"))

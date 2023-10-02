@@ -5,11 +5,11 @@ using UnityEngine;
 public class Movement : MonoBehaviour
 {
     public float movementSpeed = 0.5f;
-    private bool facingRight = false;
+    private bool facingUp = false;
 
-    public bool FacingRight
+    public bool FacingUp
     {
-        get { return facingRight; }
+        get { return facingUp; }
     }
 
     void FixedUpdate()
