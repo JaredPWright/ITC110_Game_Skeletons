@@ -6,57 +6,65 @@ using Random = UnityEngine.Random;
 
 public class Spawner : MonoBehaviour
 {
-    public float boundMin;
-    public float boundMax;
-    public float sizeOfObject = 0.0f;
-    public Vector3 stepMin = new Vector3(0.0f,0.0f,0.0f);
-    
-    public bool horizontal = true;
-    
-    public GameObject objectToSpawn;
-    // Start is called before the first frame update
-    void Start()
-    {
-        StartCoroutine(SpawnAndMove(GenerateTime()));
+    public GameManager gameManager; 
+
+   // The GameObject to instantiate.
+    public GameObject[] entitiesToSpawn;
+
+    // An instance of the ScriptableObject defined above.
+    public BadGuyManager[] spawnManagerValues;
+    public BadGuyManager currSpawnManagerValues;
+
+    // This will be appended to the name of the created entities and increment when each is created.
+    int instanceNumber = 1;
+
+    public static Spawner spawner;
+
+    void Start(){
+        gameManager = GetComponent<GameManager>();
+        currSpawnManagerValues = spawnManagerValues[0];
+        spawner = this;
+
+        StartCoroutine(SpawnEntities());
     }
 
-    float GenerateTime()
-    {
-        return Random.Range(2.0f, 5.0f);
+    public static void SetSpawnManagerVals(int switchArg){
+        spawner.currSpawnManagerValues = spawner.spawnManagerValues[switchArg];
     }
 
-    Vector3 GenerateNewPos()
+    //this is what we call a wrapper. it lets us call our method from anywhere without a direct reference to this gameobject
+    public static void Spawn()
     {
-        Vector3 newPos = new Vector3();
-        float absPosVal = Mathf.Abs(newPos.x) + Mathf.Abs(newPos.y) + Mathf.Abs(newPos.z);
-        
-        if (horizontal)
+        spawner.StartCoroutine(spawner.SpawnEntities());
+    }
+
+    private IEnumerator SpawnEntities()
+    {
+        yield return new WaitForSeconds(5.0f);
+        foreach(string prefab in currSpawnManagerValues.prefabNames)
         {
-            sizeOfObject = objectToSpawn.GetComponent<Collider2D>().bounds.size.x;
-            while (absPosVal <= sizeOfObject)
+            int currentSpawnPointIndexX = 0;
+
+            foreach(int numFabs in currSpawnManagerValues.prefabsToSpawn)
             {
-                newPos = new Vector3(Random.Range(boundMin, boundMax), transform.position.y, 0.0f);
-                absPosVal = Mathf.Abs(newPos.x) + Mathf.Abs(newPos.y) + Mathf.Abs(newPos.z);
+                int currentSpawnPointIndexY = 0;
+
+                for (int i = 0; i < numFabs; i++)
+                {
+                    // Creates an instance of the prefab at the current spawn point.
+                    GameObject currentEntity = Instantiate(entitiesToSpawn[currentSpawnPointIndexX], currSpawnManagerValues.spawnPoints[currentSpawnPointIndexX].spawnPoints[currentSpawnPointIndexY], Quaternion.identity);
+
+                    // Sets the name of the instantiated entity to be the string defined in the ScriptableObject and then appends it with a unique number. 
+                    currentEntity.name = prefab + instanceNumber;
+
+                    // Moves to the next spawn point index. If it goes out of range, it wraps back to the start.
+                    currentSpawnPointIndexY = (currentSpawnPointIndexY + 1) % currSpawnManagerValues.spawnPoints.Length;
+
+                    instanceNumber++;
+                }
+                
+                currentSpawnPointIndexX++;
             }
         }
-        else
-        {
-            sizeOfObject = objectToSpawn.GetComponent<Collider2D>().bounds.size.y;
-            while (absPosVal <= sizeOfObject)
-            {
-                newPos = new Vector3(transform.position.x, Random.Range(boundMin, boundMax), 0.0f);
-                absPosVal = Mathf.Abs(newPos.x) + Mathf.Abs(newPos.y) + Mathf.Abs(newPos.z);
-            }
-        }
-        
-        return newPos;
-    }
-
-    IEnumerator SpawnAndMove(float timeBetweenSpawns)
-    {
-        transform.position = GenerateNewPos();
-        Instantiate(objectToSpawn, transform.position, quaternion.identity);
-        yield return new WaitForSeconds(timeBetweenSpawns);
-        StartCoroutine(SpawnAndMove(GenerateTime()));
     }
 }

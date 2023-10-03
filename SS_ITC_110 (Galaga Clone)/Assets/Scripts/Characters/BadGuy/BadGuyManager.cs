@@ -2,17 +2,12 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class BadGuyManager : MonoBehaviour
+[CreateAssetMenu(fileName = "Data", menuName = "ScriptableObjects/SpawnManagerScriptableObject", order = 1)]
+public class BadGuyManager : ScriptableObject
 {
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
+   public string[] prefabNames;
 
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
+   public int[] prefabsToSpawn;
+
+   public Vector2Wrapper[] spawnPoints;
 }

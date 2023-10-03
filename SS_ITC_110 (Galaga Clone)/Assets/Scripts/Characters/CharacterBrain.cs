@@ -12,16 +12,7 @@ public class CharacterBrain : MonoBehaviour
     {
         if(health <= 0)
         {
-            Destroy(this.gameObject);
-            Time.timeScale = 0;
-        }
-    }
-
-    void FixedUpdate()
-    {
-        if(Input.GetButton("Fire1"))
-        {
-            shootScript.ShootObject();
+            GameManager.OnDeath();
         }
     }
 }
