@@ -1,6 +1,4 @@
-using System;
 using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class Shoot : MonoBehaviour
@@ -19,11 +17,11 @@ public class Shoot : MonoBehaviour
         locMoveRef = GetComponent<Movement>();
     }
     
-    private void FixedUpdate()
+    void Update()
     {
         if (Input.GetKeyDown(KeyCode.E) && canShoot)
         {
-            ShootObject();
+            StartCoroutine(ShootObject());
         }
     }
 
@@ -40,11 +38,11 @@ public class Shoot : MonoBehaviour
         if (locMoveRef.FacingUp)
         {
             // fireForward is fire to the right
-            tempRigidBody.AddForce(transform.up * bulletForce);
+            tempRigidBody.AddForce(-transform.up * bulletForce);
         }else
         {
             // fire left, a.k.a. "negative right"
-            tempRigidBody.AddForce(-transform.up * bulletForce);
+            tempRigidBody.AddForce(transform.up * bulletForce);
         }
 
         yield return new WaitForSeconds(1.0f);
