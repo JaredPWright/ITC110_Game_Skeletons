@@ -1219,6 +1219,7 @@ MonoBehaviour:
   Level: 1
   highScoreText: {fileID: 484051457}
   maxlevelText: {fileID: 1872990415}
+  OnLevel: 1
 --- !u!4 &1132636562
 Transform:
   m_ObjectHideFlags: 0
@@ -2163,7 +2164,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 655186250891357972, guid: cd670f7a550b51341889a164ee71d3bf, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0
+      value: -7.5
       objectReference: {fileID: 0}
     - target: {fileID: 655186250891357972, guid: cd670f7a550b51341889a164ee71d3bf, type: 3}
       propertyPath: m_LocalPosition.z

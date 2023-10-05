@@ -147,8 +147,8 @@ MonoBehaviour:
     y: 0
     width: 402
     height: 488
-  m_MinSize: {x: 277, y: 71}
-  m_MaxSize: {x: 4002, y: 4021}
+  m_MinSize: {x: 275, y: 50}
+  m_MaxSize: {x: 4000, y: 4000}
   m_ActualView: {fileID: 14}
   m_Panes:
   - {fileID: 14}
@@ -173,8 +173,8 @@ MonoBehaviour:
     y: 583.3333
     width: 914
     height: 278.6667
-  m_MinSize: {x: 201, y: 221}
-  m_MaxSize: {x: 4001, y: 4021}
+  m_MinSize: {x: 200, y: 200}
+  m_MaxSize: {x: 4000, y: 4000}
   m_ActualView: {fileID: 17}
   m_Panes:
   - {fileID: 17}
@@ -295,8 +295,8 @@ MonoBehaviour:
     y: 0
     width: 914
     height: 583.3333
-  m_MinSize: {x: 201, y: 221}
-  m_MaxSize: {x: 4001, y: 4021}
+  m_MinSize: {x: 200, y: 200}
+  m_MaxSize: {x: 4000, y: 4000}
   m_ActualView: {fileID: 16}
   m_Panes:
   - {fileID: 16}
@@ -347,7 +347,7 @@ MonoBehaviour:
     m_SkipHidden: 0
     m_SearchArea: 1
     m_Folders:
-    - Assets
+    - Assets/Scripts/Characters/BadGuy
     m_Globs: []
     m_OriginalText: 
     m_ImportLogFlags: 0
@@ -355,7 +355,7 @@ MonoBehaviour:
   m_ViewMode: 1
   m_StartGridSize: 64
   m_LastFolders:
-  - Assets
+  - Assets/Scripts/Characters/BadGuy
   m_LastFoldersGridSize: -1
   m_LastProjectPath: C:\Users\jdubo\Documents\UnityProjects\ITC110_Game_Skeletons\SS_ITC_110
     (Galaga Clone)
@@ -363,9 +363,9 @@ MonoBehaviour:
     m_IsLocked: 0
   m_FolderTreeState:
     scrollPos: {x: 0, y: 0}
-    m_SelectedIDs: 60630000
-    m_LastClickedID: 25440
-    m_ExpandedIDs: 0000000060630000786300007064000000ca9a3bffffff7f
+    m_SelectedIDs: ae630000
+    m_LastClickedID: 25518
+    m_ExpandedIDs: 000000003c63000054630000a463000000ca9a3bffffff7f
     m_RenameOverlay:
       m_UserAcceptedRename: 0
       m_Name: 
@@ -393,7 +393,7 @@ MonoBehaviour:
     scrollPos: {x: 0, y: 0}
     m_SelectedIDs: 
     m_LastClickedID: 0
-    m_ExpandedIDs: 0000000060630000
+    m_ExpandedIDs: 000000003c630000
     m_RenameOverlay:
       m_UserAcceptedRename: 0
       m_Name: 
@@ -437,7 +437,7 @@ MonoBehaviour:
       m_IsRenaming: 0
       m_OriginalEventType: 11
       m_IsRenamingFilename: 1
-      m_ClientGUIView: {fileID: 2}
+      m_ClientGUIView: {fileID: 12}
     m_CreateAssetUtility:
       m_EndAction: {fileID: 0}
       m_InstanceID: 0
@@ -533,9 +533,9 @@ MonoBehaviour:
   m_SceneHierarchy:
     m_TreeViewState:
       scrollPos: {x: 0, y: 0}
-      m_SelectedIDs: 
+      m_SelectedIDs: 5e640000
       m_LastClickedID: 0
-      m_ExpandedIDs: 42faffff
+      m_ExpandedIDs: b8faffff
       m_RenameOverlay:
         m_UserAcceptedRename: 0
         m_Name: 

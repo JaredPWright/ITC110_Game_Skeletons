@@ -71,7 +71,7 @@ public class BadGuyBrain : MonoBehaviour
         state = BadGuyState.Returning;
     }
 
-    void Despawn()
+    public void Despawn()
     {
         GameObject.Find("GameManager").GetComponent<GameManager>().Score = pointVal;
         GameObject.Find("GameManager").GetComponent<GameManager>().CurrentScore = pointVal;
