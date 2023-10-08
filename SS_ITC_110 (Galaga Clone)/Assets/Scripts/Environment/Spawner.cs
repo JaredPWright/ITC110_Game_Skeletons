@@ -25,7 +25,7 @@ public class Spawner : MonoBehaviour
         currSpawnManagerValues = spawnManagerValues[0];
         spawner = this;
 
-        StartCoroutine(SpawnEntities());
+        // StartCoroutine(SpawnEntities());
     }
 
     public static void SetSpawnManagerVals(int switchArg){

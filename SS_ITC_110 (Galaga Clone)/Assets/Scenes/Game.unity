@@ -1200,8 +1200,10 @@ MonoBehaviour:
   gameManager: {fileID: 0}
   entitiesToSpawn:
   - {fileID: 40827516726798640, guid: d48c8d80abee54a4588e8444f7704846, type: 3}
+  - {fileID: 2715686277303410401, guid: 626912eda6fbb474994229337c649c5a, type: 3}
   spawnManagerValues:
   - {fileID: 11400000, guid: 0b2f9f71ab24b9642ae4e869f9a7a655, type: 2}
+  - {fileID: 11400000, guid: d0ce4c09073f3ed4e81610b7e5af5aeb, type: 2}
   currSpawnManagerValues: {fileID: 0}
 --- !u!114 &1132636561
 MonoBehaviour:
