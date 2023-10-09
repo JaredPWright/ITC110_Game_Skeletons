@@ -17,13 +17,13 @@ public class Build_A_Baddie : MonoBehaviour
     {
         if (Vector3.Distance(this.gameObject.transform.position, badGuyBrain.player.transform.position) <= 2.0f)
         {
-            Explode();
+            SpeedUp();
         }
     }
 
-    public void Explode()
+    public void SpeedUp()
     {
         badGuyBrain.player.GetComponent<CharacterBrain>().health--;
-        badGuyBrain.Despawn();
+        badGuyBrain.moveSpeed++;
     }
 }

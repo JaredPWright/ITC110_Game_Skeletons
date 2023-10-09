@@ -13,9 +13,22 @@ MonoBehaviour:
   m_Name: BadGuyManager1
   m_EditorClassIdentifier: 
   prefabNames:
-  - Alien
-  prefabsToSpawn: 05000000
+  - CJF_ScaryPacman_0
+  - CJF_ScaryPacman_0
+  prefabsToSpawn: 0500000005000000
   spawnPoints:
+  - spawnPoints:
+    - {x: -5, y: 2}
+    - {x: -2, y: 2}
+    - {x: 0, y: 2}
+    - {x: 2, y: 2}
+    - {x: 5, y: 2}
+  - spawnPoints:
+    - {x: -5, y: 2}
+    - {x: -2, y: 2}
+    - {x: 0, y: 2}
+    - {x: 2, y: 2}
+    - {x: 5, y: 2}
   - spawnPoints:
     - {x: -5, y: 2}
     - {x: -2, y: 2}
