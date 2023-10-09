@@ -15,4 +15,13 @@ public class CharacterBrain : MonoBehaviour
             GameManager.OnDeath();
         }
     }
+
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        if (collision.gameObject.CompareTag("EnemyBullet"))
+        {
+            health--;
+            Destroy(collision.gameObject);
+        }
+    }
 }
