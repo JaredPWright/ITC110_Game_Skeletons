@@ -19,6 +19,8 @@ public class Build_A_Baddie : MonoBehaviour
     private bool canShoot = true;
     public float fireRate = 1f;
 
+    public float xOffSet;
+
     private void Start()
     {
         badGuyBrain = GetComponent<BadGuyBrain>();
@@ -51,7 +53,10 @@ public class Build_A_Baddie : MonoBehaviour
 
     void Movement()
     {
-        rigidBody.position = new Vector2(badGuyBrain.player.transform.position.x, rigidBody.position.y);
+        if (badGuyBrain.player.transform.position.x > 3 || badGuyBrain.player.transform.position.x < -3)
+            rigidBody.position = new Vector2(rigidBody.position.x, rigidBody.position.y);
+        else
+            rigidBody.position = new Vector2(badGuyBrain.player.transform.position.x + xOffSet, rigidBody.position.y);
     }
 
     public IEnumerator EnemyShoot()
