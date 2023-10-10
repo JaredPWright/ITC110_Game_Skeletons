@@ -2436,7 +2436,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 90406da80bef85b44bfc35b95bd70bca, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  gameManager: {fileID: 0}
+  gameManager: {fileID: 1132636561}
   entitiesToSpawn:
   - {fileID: 40827516726798640, guid: d48c8d80abee54a4588e8444f7704846, type: 3}
   spawnManagerValues:
