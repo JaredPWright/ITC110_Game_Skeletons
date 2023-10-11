@@ -5,8 +5,9 @@ using TMPro;
 
 public class GameManager : MonoBehaviour
 {
-    [SerializeField]private int PlayerScore = 0;
-    public int Score { 
+    [SerializeField] private int PlayerScore = 0;
+    public int Score
+    {
         get { return PlayerScore; }
         set
         {
@@ -22,7 +23,7 @@ public class GameManager : MonoBehaviour
         set { currentScore += value; }
     }
 
-    [SerializeField]private int Level = 1;
+    [SerializeField] private int Level = 1;
     public int Lvl
     {
         get { return Level; }
@@ -39,26 +40,31 @@ public class GameManager : MonoBehaviour
     public TextMeshProUGUI highScoreText, maxlevelText;
 
     public bool OnLevel = true;
-    
+
     void Start()
     {
         ActiveEnemies = new List<GameObject>();
         gameManager = this;
-        
+
         Spawner.Spawn();
     }
 
     void Update()
     {
-        int curPointVal = Spawner.spawner.entitiesToSpawn[Level-1].GetComponent<BadGuyBrain>().pointVal;
-        if (currentScore >=  curPointVal * Spawner.spawner.currSpawnManagerValues.prefabsToSpawn[0])
+        if (Spawner.spawner != null && Spawner.spawner.entitiesToSpawn != null && Level > 0 && Level <= Spawner.spawner.entitiesToSpawn.Length)
         {
-            currentScore = 0;
-            LevelUp();  
+            int curPointVal = Spawner.spawner.entitiesToSpawn[Level - 1]?.GetComponent<BadGuyBrain>()?.pointVal ?? 0;
+            if (currentScore >= curPointVal * Spawner.spawner.currSpawnManagerValues.prefabsToSpawn[0])
+            {
+                currentScore = 0;
+                LevelUp();
+            }
         }
     }
 
-    public static void FlushEnemy(GameObject enemy){
+
+    public static void FlushEnemy(GameObject enemy)
+    {
         ActiveEnemies.Remove(enemy);
         Destroy(enemy);
     }
@@ -73,7 +79,7 @@ public class GameManager : MonoBehaviour
     {
         Time.timeScale = 0.0f;
         ActiveEnemies.Clear();
-        if(gameManager.Score > PlayerPrefs.GetInt("HighScore"))
+        if (gameManager.Score > PlayerPrefs.GetInt("HighScore"))
         {
             PlayerPrefs.SetInt("HighScore", gameManager.Score);
         }

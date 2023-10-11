@@ -17,6 +17,7 @@ public class Build_A_Baddie : MonoBehaviour
     {
         if (Vector3.Distance(this.gameObject.transform.position, badGuyBrain.player.transform.position) <= 2.0f)
         {
+            // Duplicate();
             Explode();
         }
     }
@@ -26,4 +27,11 @@ public class Build_A_Baddie : MonoBehaviour
         badGuyBrain.player.GetComponent<CharacterBrain>().health--;
         badGuyBrain.Despawn();
     }
+
+    // public void Duplicate()
+    // {
+    //     //duplicate this object
+    //     GameObject newBadGuy = Instantiate(this.gameObject);
+    //     newBadGuy.transform.position = new Vector3(UnityEngine.Random.Range(-5.0f, 5.0f), 0.0f, UnityEngine.Random.Range(-5.0f, 5.0f));
+    // }
 }

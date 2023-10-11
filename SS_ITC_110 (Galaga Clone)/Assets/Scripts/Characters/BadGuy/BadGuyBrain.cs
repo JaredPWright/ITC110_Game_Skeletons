@@ -12,7 +12,7 @@ public class BadGuyBrain : MonoBehaviour
 
     public int pointVal = 100;
 
-    public enum BadGuyState { Attacking, Idling, Returning  };
+    public enum BadGuyState { Attacking, Idling, Returning };
     public BadGuyState state;
 
     [SerializeField] private Vector3 homePos;
@@ -20,25 +20,26 @@ public class BadGuyBrain : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        player = GameObject.Find("PlayerShip");
-        state = BadGuyState.Idling;
+        state = BadGuyState.Attacking;
         homePos = this.transform.position;
+        player = GameObject.Find("PlayerShip");
+
+        // Start seeking the player.
+        StartCoroutine(SeekPlayer());
     }
 
     // Update is called once per frame
     void Update()
     {
-        if(transform.position == homePos) { state = BadGuyState.Idling; }
-
-        switch(state)
+        switch (state)
         {
-            case BadGuyState.Attacking :
-                Vector3.MoveTowards(this.transform.position, player.transform.position, moveSpeed * Time.deltaTime);
+            case BadGuyState.Attacking:
+                transform.position = Vector3.MoveTowards(transform.position, player.transform.position, moveSpeed * Time.deltaTime);
                 break;
-            case BadGuyState.Returning :
-                Vector3.MoveTowards(this.transform.position, homePos, moveSpeed * Time.deltaTime);
+            case BadGuyState.Returning:
+                transform.position = Vector3.MoveTowards(transform.position, homePos, moveSpeed * Time.deltaTime);
                 break;
-            default :
+            default:
                 SeekPlayer();
                 break;
         }
@@ -48,7 +49,7 @@ public class BadGuyBrain : MonoBehaviour
     {
         GameObject temp = other.gameObject;
         if (temp.CompareTag("Player"))
-        {   
+        {
             Despawn();
             temp.GetComponent<CharacterBrain>().health--;
         }
@@ -65,10 +66,13 @@ public class BadGuyBrain : MonoBehaviour
 
     IEnumerator SeekPlayer()
     {
-        yield return new WaitForSeconds(timeBetweenStates);
-        state = BadGuyState.Attacking;
-        yield return new WaitForSeconds(timeBetweenStates);
-        state = BadGuyState.Returning;
+        while (true)
+        {
+            yield return new WaitForSeconds(timeBetweenStates);
+            state = BadGuyState.Attacking;
+            yield return new WaitForSeconds(timeBetweenStates);
+            state = BadGuyState.Returning;
+        }
     }
 
     public void Despawn()

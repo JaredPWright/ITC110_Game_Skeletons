@@ -18,8 +18,11 @@ public class GameOverCanvas : MonoBehaviour
 
     public static void ActivateGameOverCanvas()
     {
-        foreach(GameObject element in gameOverCanvas.canvas.transform.GetComponentsInChildren<GameObject>())
+        foreach (Transform child in gameOverCanvas.canvas.transform)
         {
+            Time.timeScale = 0;
+            GameObject element = child.gameObject;
+
             //this is a bit opaque. Basically, to turn off the current score and turn on the other objects, we just reverse the states
             element.SetActive(!element.activeSelf);
         }
