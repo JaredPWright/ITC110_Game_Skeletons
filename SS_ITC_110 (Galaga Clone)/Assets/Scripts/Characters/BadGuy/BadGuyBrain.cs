@@ -12,7 +12,7 @@ public class BadGuyBrain : MonoBehaviour
 
     public int pointVal = 100;
 
-    public enum BadGuyState { Attacking, Idling, Returning  };
+    public enum BadGuyState { Attacking, Idling, Returning };
     public BadGuyState state;
 
     [SerializeField] private Vector3 homePos;
@@ -28,17 +28,16 @@ public class BadGuyBrain : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if(transform.position == homePos) { state = BadGuyState.Idling; }
 
-        switch(state)
+        switch (state)
         {
-            case BadGuyState.Attacking :
+            case BadGuyState.Attacking:
                 Vector3.MoveTowards(this.transform.position, player.transform.position, moveSpeed * Time.deltaTime);
                 break;
-            case BadGuyState.Returning :
+            case BadGuyState.Returning:
                 Vector3.MoveTowards(this.transform.position, homePos, moveSpeed * Time.deltaTime);
                 break;
-            default :
+            default:
                 SeekPlayer();
                 break;
         }
@@ -48,7 +47,7 @@ public class BadGuyBrain : MonoBehaviour
     {
         GameObject temp = other.gameObject;
         if (temp.CompareTag("Player"))
-        {   
+        {
             Despawn();
             temp.GetComponent<CharacterBrain>().health--;
         }

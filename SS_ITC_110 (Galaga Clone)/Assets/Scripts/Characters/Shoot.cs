@@ -45,10 +45,10 @@ public class Shoot : MonoBehaviour
             tempRigidBody.AddForce(transform.up * bulletForce);
         }
 
-        yield return new WaitForSeconds(1.0f);
+        yield return new WaitForSeconds(0.5f);
 
         canShoot = true;
         // basic Clean Up, set Bullets to self destruct after 5 seconds
-        Destroy(newBullet, 5.0f);
+        Destroy(newBullet, 2.0f);
     }
 }

@@ -6,9 +6,9 @@ using Random = UnityEngine.Random;
 
 public class Spawner : MonoBehaviour
 {
-    public GameManager gameManager; 
+    public GameManager gameManager;
 
-   // The GameObject to instantiate.
+    // The GameObject to instantiate.
     public GameObject[] entitiesToSpawn;
 
     // An instance of the ScriptableObject defined above.
@@ -19,16 +19,18 @@ public class Spawner : MonoBehaviour
     int instanceNumber = 1;
 
     public static Spawner spawner;
-    
-    void Start(){
+
+    void Start()
+    {
         gameManager = GetComponent<GameManager>();
         currSpawnManagerValues = spawnManagerValues[0];
         spawner = this;
 
-        StartCoroutine(SpawnEntities());
+        // StartCoroutine(SpawnEntities());
     }
 
-    public static void SetSpawnManagerVals(int switchArg){
+    public static void SetSpawnManagerVals(int switchArg)
+    {
         spawner.currSpawnManagerValues = spawner.spawnManagerValues[switchArg];
     }
 
@@ -41,11 +43,11 @@ public class Spawner : MonoBehaviour
     private IEnumerator SpawnEntities()
     {
         yield return new WaitForSeconds(5.0f);
-        foreach(string prefab in currSpawnManagerValues.prefabNames)
+        foreach (string prefab in currSpawnManagerValues.prefabNames)
         {
             int currentSpawnPointIndexX = 0;
 
-            foreach(int numFabs in currSpawnManagerValues.prefabsToSpawn)
+            foreach (int numFabs in currSpawnManagerValues.prefabsToSpawn)
             {
                 int currentSpawnPointIndexY = 0;
 
@@ -62,7 +64,7 @@ public class Spawner : MonoBehaviour
 
                     instanceNumber++;
                 }
-                
+
                 currentSpawnPointIndexX++;
             }
         }

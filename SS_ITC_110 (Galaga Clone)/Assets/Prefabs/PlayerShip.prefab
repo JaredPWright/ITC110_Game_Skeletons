@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 655186250891357969}
   - component: {fileID: 655186250891357970}
   - component: {fileID: 655186250891357971}
-  - component: {fileID: 3405452556379823220}
+  - component: {fileID: 8929678635484905056}
   - component: {fileID: 5051589600117093589}
   m_Layer: 0
   m_Name: PlayerShip
@@ -79,7 +79,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 2
-  m_Sprite: {fileID: 21300000, guid: ccc9ba06bd960fc4c9ee010ba2e4725b, type: 3}
+  m_Sprite: {fileID: 1988569877, guid: 61b35f05081c0a34680ad81a5b9315d1, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -131,13 +131,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 37913fae3bd32f543b907b882b18b71b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  bullet: {fileID: 7386843797520884387, guid: 39f4042b5abb95542990625202e65967, type: 3}
+  bullet: {fileID: 7896609459298804633, guid: 5b907f646711335458569cf29f7993b6, type: 3}
   firePoint: {fileID: 7422179782115406399}
   bulletForce: 1500
   locMoveRef: {fileID: 655186250891357970}
   canShoot: 1
---- !u!61 &3405452556379823220
-BoxCollider2D:
+--- !u!58 &8929678635484905056
+CircleCollider2D:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
@@ -165,22 +165,12 @@ BoxCollider2D:
   m_CallbackLayers:
     serializedVersion: 2
     m_Bits: 4294967295
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
   m_Offset: {x: 0, y: 0}
-  m_SpriteTilingProperty:
-    border: {x: 0, y: 0, z: 0, w: 0}
-    pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 2, y: 2}
-    newSize: {x: 1, y: 1}
-    adaptiveTilingThreshold: 0.5
-    drawMode: 0
-    adaptiveTiling: 0
-  m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 2, y: 2}
-  m_EdgeRadius: 0
+  m_Radius: 0.4
 --- !u!50 &5051589600117093589
 Rigidbody2D:
   serializedVersion: 4
