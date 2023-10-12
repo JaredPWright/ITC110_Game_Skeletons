@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -53,6 +54,15 @@ public class BadGuyBrain : MonoBehaviour
         }
     }
 
+    private void OnTriggerEnter2D(Collider2D other)
+    {
+        if (other.gameObject.CompareTag("Bullet"))
+        {
+            other.gameObject.GetComponent<Bullet>().Despawn();
+            Despawn();
+        }
+    }
+
     IEnumerator SeekPlayer()
     {
         yield return new WaitForSeconds(timeBetweenStates);
@@ -61,9 +71,10 @@ public class BadGuyBrain : MonoBehaviour
         state = BadGuyState.Returning;
     }
 
-    void Despawn()
+    public void Despawn()
     {
-        Destroy(this.gameObject);
         GameObject.Find("GameManager").GetComponent<GameManager>().Score = pointVal;
+        GameObject.Find("GameManager").GetComponent<GameManager>().CurrentScore = pointVal;
+        Destroy(this.gameObject);
     }
 }

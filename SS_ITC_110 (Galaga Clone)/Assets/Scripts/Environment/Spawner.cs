@@ -19,7 +19,7 @@ public class Spawner : MonoBehaviour
     int instanceNumber = 1;
 
     public static Spawner spawner;
-
+    
     void Start(){
         gameManager = GetComponent<GameManager>();
         currSpawnManagerValues = spawnManagerValues[0];

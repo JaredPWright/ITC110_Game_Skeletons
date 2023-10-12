@@ -1,4 +1,5 @@
 using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 using TMPro;
 
@@ -12,6 +13,13 @@ public class GameManager : MonoBehaviour
             PlayerScore += value;
             ScoreWatcher.BumpScore(PlayerScore);
         }
+    }
+
+    private int currentScore = 0;
+
+    public int CurrentScore
+    {
+        set { currentScore += value; }
     }
 
     [SerializeField]private int Level = 1;
@@ -30,10 +38,21 @@ public class GameManager : MonoBehaviour
     //GameOver screen elements
     public TextMeshProUGUI highScoreText, maxlevelText;
 
+    public bool OnLevel = true;
+    
     void Start()
     {
         ActiveEnemies = new List<GameObject>();
         gameManager = this;
+    }
+
+    void Update()
+    {
+        if (currentScore >= Spawner.spawner.entitiesToSpawn[Level].GetComponent<BadGuyBrain>().pointVal * Spawner.spawner.currSpawnManagerValues.prefabsToSpawn[Level])
+        {
+            currentScore = 0;
+            LevelUp();
+        }
     }
 
     public static void FlushEnemy(GameObject enemy){
@@ -43,12 +62,13 @@ public class GameManager : MonoBehaviour
 
     private void LevelUp()
     {
-        Spawner.SetSpawnManagerVals(++Level);
+        Spawner.SetSpawnManagerVals(Level++);
         Spawner.Spawn();
     }
 
     public static void OnDeath()
     {
+        Time.timeScale = 0.0f;
         ActiveEnemies.Clear();
         if(gameManager.Score > PlayerPrefs.GetInt("HighScore"))
         {
